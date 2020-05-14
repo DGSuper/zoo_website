@@ -47,7 +47,7 @@ $animal_enclosure_id = $animal_info_firstrow["ENCLOSURE_ID"];
 <body>
     <?php
     echo "<h1>".$animal_name."</h1>";
-    echo "Species: ".$animal_type."<br>";
+    echo "Species: <a href='species.php?id=$animal_type_id'>".$animal_type."</a><br>";
     echo "Home: <a href='enclosure.php?id=$animal_enclosure_id'>$animal_enclosure</a>";
     ?>
 
