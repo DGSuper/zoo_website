@@ -85,8 +85,8 @@ if (!$conn) {
   <!-- The Band Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2 class="w3-wide">HISTORY</h2>
-    <p class="w3-opacity"><i>add text</i></p>
-    <p class="w3-justify">make up a small story about the zoo</p>
+    <p class="w3-opacity"><i>Our Story</i></p>
+    <p class="w3-justify"><i>"It's hard to be blue, when you run a zoo"</i> - Clint Eastwood<br>We made this zoo because monkeys are epic and cool.</p>
     <div class="w3-row w3-padding-32">
       <div class="w3-third">
         <p>Name of owner</p>
