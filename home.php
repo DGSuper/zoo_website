@@ -111,7 +111,7 @@ if (!$conn) {
 
       <ul class="w3-ul w3-border w3-white w3-text-grey">
         <?php
-        $sql = "SELECT A.NICKNAME, A.NAME AS
+        $animal_query = "SELECT A.NICKNAME, A.NAME AS
         TYPE , A.DESCRIPTION, ZOO_ENCLOSURE.TYPE AS LOCATION
         FROM (
         
@@ -121,7 +121,7 @@ if (!$conn) {
         ) AS A
         LEFT JOIN ZOO_ENCLOSURE ON ZOO_ENCLOSURE.ID = A.ENCLOSURE_ID
         LIMIT 0 , 30";
-        $result = $conn->query($sql);
+        $result = $conn->query($animal_query);
         
         if ($result->num_rows > 0) {
           // output data of each row
