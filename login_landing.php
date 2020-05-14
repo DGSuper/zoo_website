@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <head>
 </head>
 <body>
@@ -38,7 +42,8 @@
         else
         {
             //Successful login.
-            echo "What's poppin', ".$_POST["username"];
+            header('Location: home.php');
+            $_SESSION["username"] = $_POST["username"];
         }
     }
     

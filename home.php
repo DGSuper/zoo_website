@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>
@@ -85,6 +89,18 @@ if (!$conn) {
     <h2 class="w3-wide">HISTORY</h2>
     <p class="w3-opacity"><i>Our Story</i></p>
     <p class="w3-justify"><i>"It's hard to be blue, when you run a zoo"</i> - Clint Eastwood<br>We made this zoo because monkeys are epic and cool.</p>
+    <?php
+    if (array_key_exists('username', $_SESSION))
+    {
+      echo "<p> Your name is ".$_SESSION['username'] ."</p>";
+    }
+    else
+    {
+      echo "<p> Not logged in</p>";
+    }
+    
+    ?>
+    
     <h2 class="w3-wide">THE TEAM</h2>
     <div class="w3-row w3-padding-32">
     <?php
