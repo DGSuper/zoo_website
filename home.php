@@ -18,9 +18,10 @@ body {font-family: "Lato", sans-serif}
 $servername = "mysql.eecs.ku.edu";
 $username = "dgsuper09";
 $password = "DGarcia09!";
+$dbname = "dgsuper09";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
 if (!$conn) {
@@ -109,9 +110,28 @@ if (!$conn) {
       <p class="w3-opacity w3-center"><i>Take a look at our beautiful animals!</i></p><br>
 
       <ul class="w3-ul w3-border w3-white w3-text-grey">
-        <li class="w3-padding"><span class="w3-tag w3-red w3-margin-left"></span></li>
-        <li class="w3-padding"><span class="w3-tag w3-red w3-margin-left"></span></li>
-        <li class="w3-padding"><span class="w3-badge w3-right w3-margin-right"></span></li>
+        <?php
+        $sql = "SELECT A.NICKNAME, A.NAME AS
+        TYPE , A.DESCRIPTION, ZOO_ENCLOSURE.TYPE AS LOCATION
+        FROM (
+        
+        SELECT ZOO_ANIMAL.ID, ZOO_ANIMAL.ENCLOSURE_ID, ZOO_ANIMAL.NICKNAME, ZOO_ANIMAL_TYPE.NAME, ZOO_ANIMAL_TYPE.DESCRIPTION
+        FROM ZOO_ANIMAL_TYPE
+        LEFT JOIN ZOO_ANIMAL ON ZOO_ANIMAL_TYPE.ID = ZOO_ANIMAL.ANIMAL_TYPE_ID
+        ) AS A
+        LEFT JOIN ZOO_ENCLOSURE ON ZOO_ENCLOSURE.ID = A.ENCLOSURE_ID
+        LIMIT 0 , 30";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo "<li class='w3-padding'><span class='w3-tag w3-red w3-margin-left'><b>".$row["NICKNAME"]."</b>, the ".$row['TYPE'].", in ".$row['LOCATION']."  <i>".$row['DESCRIPTION']."</i></span></li>";//echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+          }
+        } else {
+          echo "0 results";
+        }
+        ?>
       </ul>
 
       <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
