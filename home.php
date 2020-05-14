@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>
@@ -11,6 +13,21 @@ body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 </style>
 <body>
+
+<?php
+$servername = "mysql.eecs.ku.edu";
+$username = "dgsuper09";
+$password = "DGarcia09!";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "<h1>Connected successfully<\h1>";
+?>
 
 <!-- Navbar -->
 <div class="w3-top">
