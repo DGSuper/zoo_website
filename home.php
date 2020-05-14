@@ -87,19 +87,26 @@ if (!$conn) {
     <h2 class="w3-wide">HISTORY</h2>
     <p class="w3-opacity"><i>Our Story</i></p>
     <p class="w3-justify"><i>"It's hard to be blue, when you run a zoo"</i> - Clint Eastwood<br>We made this zoo because monkeys are epic and cool.</p>
+    <h2 class="w3-wide">THE TEAM</h2>
     <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Name of owner</p>
-        <img src="blank_person.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name of owner</p>
-        <img src="blank_person.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
-      </div>
-      <div class="w3-third">
-        <p>Name of owner</p>
-        <img src="blank_person.png" class="w3-round" alt="Random Name" style="width:60%">
-      </div>
+    <?php
+        $employee_query = "SELECT NAME, JOB FROM ZOO_EMPLOYEE";
+        $employee_result = $conn->query($employee_query);
+        
+        if ($employee_result->num_rows > 0) {
+          // output data of each row
+          while($row = $employee_result->fetch_assoc()) {
+            echo "<div class='w3-third'>";
+            echo "<p>".ucfirst($row['JOB'])."</p>";
+            echo " <img src='blank_person.png' class='w3-round w3-margin-bottom' alt='Random Name' style='width:60%'>";
+            echo "<p>".$row['NAME']."</p>";
+            echo "</div>";
+          }
+        } else {
+          echo "0 results";
+        }
+        ?>
+      </ul>
     </div>
   </div>
 
