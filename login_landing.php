@@ -5,7 +5,7 @@ session_start();
 <head>
 </head>
 <body>
-    
+
     <?php
 
     //ACQUIRE CONNECTION TO SQL
@@ -22,19 +22,19 @@ session_start();
     die("Connection failed: " . mysqli_connect_error());
     }
 
-    $user_query = "SELECT * FROM ZOO_VISITOR WHERE USERNAME = \"".$_POST["username"]."\"";
+    $user_query = "SELECT * FROM ZOO_VISITOR WHERE USERNAME = \"".$_POST["uname"]."\"";
     $user_result = $conn->query($user_query);
-    
+
 
     if (mysqli_num_rows($user_result)==0)
     {
         //Wrong username
-        echo "User ".$_POST["username"]." not found!";
+        echo "User ".$_POST["uname"]." not found!";
     }
     else
     {
         $firstrow = mysqli_fetch_assoc($user_result);
-        if ($firstrow["PASSWORD"] != $_POST["password"])
+        if ($firstrow["PASSWORD"] != $_POST["psw"])
         {
             //Wrong Password
             echo "Incorrect Password!";
@@ -42,10 +42,10 @@ session_start();
         else
         {
             //Successful login.
-            header('Location: home.php');
-            $_SESSION["username"] = $_POST["username"];
+            header('Location: signed_in.php');
+            $_SESSION["username"] = $_POST["uname"];
         }
     }
-    
+
     ?>
 </body>

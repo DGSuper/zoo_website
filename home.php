@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +43,7 @@ if (!$conn) {
         <a href="#" class="w3-bar-item w3-button">EMPLOYEES</a>
       </div>
     </div>
+    <a href="create_acc.php" class="w3-padding-large w3-hover-red w3-hide-small w3-right">CREATE ACCOUNT</a>
     <a href="login.php" class="w3-padding-large w3-hover-red w3-hide-small w3-right">LOGIN</a>
   </div>
 </div>
@@ -88,25 +86,14 @@ if (!$conn) {
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2 class="w3-wide">HISTORY</h2>
     <p class="w3-opacity"><i>Our Story</i></p>
-    <p class="w3-justify"><i>"It's hard to be blue, when you run a zoo"</i> - Clint Eastwood<br>We made this zoo because monkeys are epic and cool.</p>
-    <?php
-    if (array_key_exists('username', $_SESSION))
-    {
-      echo "<p> Your name is ".$_SESSION['username'] ."</p>";
-    }
-    else
-    {
-      echo "<p> Not logged in</p>";
-    }
-    
-    ?>
-    
+    <p class="w3-opacity"><i>"It's hard to be blue, when you run a zoo"</i> - Clint Eastwood<br>We made this zoo because monkeys are epic and cool.</p>
+
     <h2 class="w3-wide">THE TEAM</h2>
     <div class="w3-row w3-padding-32">
     <?php
         $employee_query = "SELECT NAME, JOB FROM ZOO_EMPLOYEE";
         $employee_result = $conn->query($employee_query);
-        
+
         if ($employee_result->num_rows > 0) {
           // output data of each row
           while($row = $employee_result->fetch_assoc()) {
@@ -127,8 +114,34 @@ if (!$conn) {
   <!-- The Tour Section -->
   <div class="w3-black" id="animals">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center"><a href="all_animals.php">ANIMALS</a></h2>
-      <h2 class="w3-wide w3-center"><a href="all_enclosures.php">ENCLOSURES</a></h2>
+      <h2 class="w3-wide w3-center">ANIMALS LIST</h2>
+      <p class="w3-opacity w3-center"><i>Take a look at our beautiful animals!</i></p><br>
+
+      <ul class="w3-ul w3-border w3-white w3-text-grey">
+        <?php
+        $animal_query = "SELECT A.NICKNAME, A.NAME AS
+        TYPE , A.DESCRIPTION, ZOO_ENCLOSURE.TYPE AS LOCATION
+        FROM (
+
+        SELECT ZOO_ANIMAL.ID, ZOO_ANIMAL.ENCLOSURE_ID, ZOO_ANIMAL.NICKNAME, ZOO_ANIMAL_TYPE.NAME, ZOO_ANIMAL_TYPE.DESCRIPTION
+        FROM ZOO_ANIMAL_TYPE
+        LEFT JOIN ZOO_ANIMAL ON ZOO_ANIMAL_TYPE.ID = ZOO_ANIMAL.ANIMAL_TYPE_ID
+        ) AS A
+        LEFT JOIN ZOO_ENCLOSURE ON ZOO_ENCLOSURE.ID = A.ENCLOSURE_ID
+        LIMIT 0 , 30";
+        $result = $conn->query($animal_query);
+
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo "<li class='w3-padding'><span class='w3-tag w3-red w3-margin-left'><b>".$row["NICKNAME"]."</b>, the ".$row['TYPE'].", in ".$row['LOCATION']."  <i>".$row['DESCRIPTION']."</i></span></li>";//echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+          }
+        } else {
+          echo "0 results";
+        }
+        ?>
+      </ul>
+
       <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
         <div class="w3-third w3-margin-bottom">
           <img src="ticket.jpg" alt="ga" style="width:100%" class="w3-hover-opacity">
