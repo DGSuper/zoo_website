@@ -1,4 +1,8 @@
 
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>W3.CSS Template</title>
@@ -44,8 +48,20 @@ if (!$conn) {
         <a href="#" class="w3-bar-item w3-button">EMPLOYEES</a>
       </div>
     </div>
-    <a href="create_acc.php" class="w3-padding-large w3-hover-red w3-hide-small w3-right">CREATE ACCOUNT</a>
-    <a href="login.php" class="w3-padding-large w3-hover-red w3-hide-small w3-right">LOGIN</a>
+    
+    <?php
+    if (array_key_exists('username', $_SESSION))
+    {
+      echo "Hello, ". $_SESSION["username"];
+      echo "<a href='logout.php' class='w3-padding-large w3-hover-red w3-hide-small w3-right'>LOGOUT</a>";
+    }
+    else
+    {
+      echo "<a href='login.php' class='w3-padding-large w3-hover-red w3-hide-small w3-right'>LOGIN</a>";
+      echo "<a href='create_acc.php' class='w3-padding-large w3-hover-red w3-hide-small w3-right'>CREATE ACCOUNT</a>";
+    }
+    ?>
+    
   </div>
 </div>
 

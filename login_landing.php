@@ -42,7 +42,7 @@ session_start();
         else
         {
             //Successful login.
-            header('Location: signed_in.php');
+            header('Location: home.php');
             $_SESSION["username"] = $_POST["uname"];
         }
     }
