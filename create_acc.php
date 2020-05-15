@@ -71,7 +71,7 @@
   }
   </style>
   <body>
-    <form action="/action_page.php" style="border:1px solid #ccc">
+    <form action="create_account_landing.php" style="border:1px solid #ccc" method="post">
       <div class="container">
         <h1>Create An Account</h1>
         <hr />
