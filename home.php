@@ -101,8 +101,8 @@ if (!$conn) {
     <h2 class="w3-wide">THE TEAM</h2>
     <div class="w3-row w3-padding-32">
     <?php
-        $employee_query = "SELECT NAME, JOB FROM ZOO_EMPLOYEE";
-        $employee_result = $conn->query($employee_query);
+        $employee_sql = "SELECT NAME, JOB FROM ZOO_EMPLOYEE";
+        $employee_result = $conn->query($employee_sql);
 
         if ($employee_result->num_rows > 0) {
           // output data of each row

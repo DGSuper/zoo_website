@@ -22,8 +22,8 @@ session_start();
     die("Connection failed: " . mysqli_connect_error());
     }
 
-    $user_query = "SELECT * FROM ZOO_VISITOR WHERE USERNAME = \"".$_POST["uname"]."\"";
-    $user_result = $conn->query($user_query);
+    $user_sql = "SELECT * FROM ZOO_VISITOR WHERE USERNAME = \"".$_POST["uname"]."\"";
+    $user_result = $conn->query($user_sql);
 
 
     if (mysqli_num_rows($user_result)==0)
