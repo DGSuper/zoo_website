@@ -34,7 +34,7 @@ $enclosure_name = $enclosure_info_firstrow["TYPE"];
 $animals_in_enclosure_info_sql = "SELECT * FROM ZOO_ANIMAL WHERE ENCLOSURE_ID = ".$enclosure_id;
 $animals_in_enclosure_info_result = $conn->query($animals_in_enclosure_info_sql);
 
-$enclosure_workers_info_sql = "SELECT NAME, JOB, YEARS_OF_SERVICE, ID FROM ZOO_WORKS_AT, ZOO_EMPLOYEE WHERE ZOO_WORKS_AT.EMPLOYEE_ID = ZOO_EMPLOYEE.ID && ENCLOSURE_ID =$enclosure_id";
+$enclosure_workers_info_sql = "SELECT NAME, JOB, YEARS_OF_SERVICE, ID FROM ZOO_WORKS_AT LEFT JOIN ZOO_EMPLOYEE ON ZOO_WORKS_AT.EMPLOYEE_ID = ZOO_EMPLOYEE.ID WHERE ENCLOSURE_ID =$enclosure_id";
 $enclosure_workers_info_result = $conn->query($enclosure_workers_info_sql);
 
 $enclosure_visitors_info_sql = "SELECT NAME, ID FROM ZOO_VISIT, ZOO_VISITOR WHERE ZOO_VISIT.VISITOR_ID = ZOO_VISITOR.ID && ENCLOSURE_ID =$enclosure_id";
