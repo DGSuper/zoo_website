@@ -5,7 +5,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>THE ZOO</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -32,23 +32,22 @@ if (!$conn) {
 }
 ?>
 
-<!-- Navbar -->
+
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <a href="#history" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HISTORY</a>
+    <a href="home.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="home.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HISTORY</a>
     <a href="all_animals.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ANIMALS</a>
     <a href="all_enclosures.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ENCLOSURES</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="#" class="w3-bar-item w3-button">STORE</a>
-        <a href="#" class="w3-bar-item w3-button">EMPLOYEES</a>
+        <a href="#" class="w3-bar-item w3-button">STORE(soon)</a>
+        <a href="#" class="w3-bar-item w3-button">EMPLOYEES(soon)</a>
       </div>
     </div>
-    
+
     <?php
     if (array_key_exists('username', $_SESSION))
     {
@@ -61,17 +60,11 @@ if (!$conn) {
       echo "<a href='create_acc.php' class='w3-padding-large w3-hover-red w3-hide-small w3-right'>CREATE ACCOUNT</a>";
     }
     ?>
-    
+
   </div>
 </div>
 
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-  <a href="#history" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HISTORY</a>
-  <a href="#animals" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ANIMALS</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">STORE</a>
-</div>
+
 
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
@@ -99,7 +92,7 @@ if (!$conn) {
     </div>
   </div>
 
-  <!-- The Band Section -->
+
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2 class="w3-wide">HISTORY</h2>
     <p class="w3-opacity"><i>Our Story</i></p>
@@ -128,12 +121,12 @@ if (!$conn) {
     </div>
   </div>
 
-  <!-- The Tour Section -->
+
   <div class="w3-black" id="animals">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center"><a href="all_animals.php">ANIMALS</a></h2>
-      <h2 class="w3-wide w3-center"><a href="all_enclosures.php">ENCLOSURES</a></h2>
-
+      <h1 class="w3-wide w3-center">EXPLORE OUR ZOO</h2>
+      <h3 class="w3-wide w3-center"><a href="all_animals.php">ANIMALS</a></h2>
+      <h3 class="w3-wide w3-center"><a href="all_enclosures.php">ENCLOSURES</a></h2>
 
       <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
         <div class="w3-third w3-margin-bottom">
@@ -141,7 +134,7 @@ if (!$conn) {
           <div class="w3-container w3-white">
             <p><b>General Admission</b></p>
             <p>Grants you entry to the zoo, except to paid exhibits.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Coming Soon</button>
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
@@ -149,7 +142,7 @@ if (!$conn) {
           <div class="w3-container w3-white">
             <p><b>GA + Food</b></p>
             <p>Grants entry to the zoo plus two food tickets.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Coming Soon</button>
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
@@ -157,14 +150,13 @@ if (!$conn) {
           <div class="w3-container w3-white">
             <p><b>VIP Tickets</b></p>
             <p>Grants to access to everything on the park.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Coming Soon</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Ticket Modal -->
   <div id="ticketModal" class="w3-modal">
     <div class="w3-modal-content w3-animate-top w3-card-4">
       <header class="w3-container w3-teal w3-center w3-padding-32">
@@ -184,7 +176,7 @@ if (!$conn) {
     </div>
   </div>
 
-  <!-- The Contact Section -->
+
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
     <h2 class="w3-wide w3-center">CONTACT</h2>
     <p class="w3-opacity w3-center"><i>Tell us how to improve!</i></p>
@@ -211,13 +203,13 @@ if (!$conn) {
     </div>
   </div>
 
-<!-- End Page Content -->
+
 </div>
 
-<!-- Image of location/map -->
+
 <img src="zoo_top_view.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
-<!-- Footer -->
+
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
   <i class="fa fa-instagram w3-hover-opacity"></i>
