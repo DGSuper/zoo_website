@@ -25,6 +25,6 @@ session_start();
     $user_result = $conn->query($new_user);
     $_SESSION["username"] = $_POST["username"];
     header('Location: home.php');
-            
+
     ?>
 </body>

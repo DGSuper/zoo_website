@@ -1,4 +1,5 @@
 <html>
+<title>Create Account</title>
   <style>
     body {font-family: Arial, Helvetica, sans-serif;}
     * {box-sizing: border-box}
